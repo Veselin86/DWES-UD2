@@ -15,58 +15,65 @@
     );
 
     function listado($datos_hoteles) {
-        echo "<h3>Listado de hoteles:</h3>";
+        $listado = "<h3>Listado de hoteles:</h3>";
         foreach ($datos_hoteles as $lista) {
-            echo $lista["nombre"] . "<br>";
+            $listado .= $lista["nombre"] . "<br>";
         }
+        return $listado;
     };
 
     function mas_de_100_hab($datos_hoteles) {
-        echo "<h3>Listado de hoteles con mas de 100 habitaciones:</h3>";
+        $datosHoteles = "<h3>Listado de hoteles con mas de 100 habitaciones:</h3>";
         foreach ($datos_hoteles as $lista) {
             if ($lista["hab"] > 100) {
-                echo $lista["nombre"] . "<br>";
+                $datosHoteles .= $lista["nombre"] . "<br>";
             }
         }
+        return $datosHoteles;
     };
 
     function mas_de_100_hab_y_3($datos_hoteles) {
-        echo "<h3>Listado de hoteles con mas de 100 habitaciones y 3 estrellas:</h3>";
+        $masDe100Hab = "<h3>Listado de hoteles con mas de 100 habitaciones y 3 estrellas:</h3>";
         foreach ($datos_hoteles as $lista) {
             if ($lista["hab"] > 100 && $lista["cat"] == "3*") {
-                echo $lista["nombre"] . "<br>";
+                $masDe100Hab .= $lista["nombre"] . "<br>";
             }
         }
+        return $masDe100Hab;
     };
 
     function borrar_hotel_acta($datos_hoteles) {
-        echo "<h3>Borrar hotel Acta del Carmen y mostrar listado de hoteles:</h3>";
+        $borrarHotelActa = "<h3>Borrar hotel Acta del Carmen y mostrar listado de hoteles:</h3>";
         unset ($datos_hoteles[3]);
         foreach ($datos_hoteles as $lista) {
-            echo $lista["nombre"] . "<br>";
+            $borrarHotelActa .= $lista["nombre"] . "<br>";
         }
+        return $borrarHotelActa;
     };
 
     function borrar_todos_hoteles($datos_hoteles) {
-        echo "<h3>Borrar todos los hoteles y muestra del mensaje:</h3>";
+        $borrarHoteles =  "<h3>Borrar todos los hoteles y muestra del mensaje:</h3>";
         foreach ($datos_hoteles as $clave => $valor) {
             unset ($datos_hoteles[$clave]);
         }
         if (empty($datos_hoteles)) {
-            echo "No hay hoteles en la base de datos!<br>";
-            print_r($datos_hoteles);
+            $borrarHoteles .= "No hay hoteles en la base de datos!<br>";
+        } else {
+            $borrarHoteles .= "Los hoteles no se han borrado correctamente!<br>";
         }
+        return $borrarHoteles;
     };
 
     function anadir($datos_hoteles) {
-        echo "<h3>Añadir nuevos hoteles y mostrar el listado:</h3>";
+        $aniadir = "<h3>Añadir nuevos hoteles y mostrar el listado:</h3>";
         $datos_hoteles = array (
             array ("nombre" => "Astoria Palace (Ayre Fiesta)", "cat" => "4*", "hab" => 204, "poblacion" => "46002 Valencia", "direccion" => "Plaza Rodrigo Botet, 5"),
             array ("nombre" => "Balneario Las Arenas", "cat" => "lujo", "hab" => 253, "poblacion" => "46011 Valencia", "direccion" => "Eugenia Viñes, 22-24")
         );
         foreach ($datos_hoteles as $lista) {
-            echo $lista["nombre"] . "<br>";
-        }            
+            $aniadir .= $lista["nombre"] . "<br>";
+        }      
+        return $aniadir;      
     };
 
     print_r($datos_hoteles);
